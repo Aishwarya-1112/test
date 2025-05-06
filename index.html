@@ -43,3 +43,196 @@
     <p>Visit <a href="https://www.example.com" target="_blank">Example.com</a> for more information.</p>
 </body>
 </html>
+
+
+
+<!-- import React, { useState } from 'react';
+import {
+  AppBar,
+  Toolbar,
+  Typography,
+  Container,
+  TextField,
+  Button,
+  MenuItem,
+  Table,
+  TableHead,
+  TableRow,
+  TableCell,
+  TableBody,
+  Switch,
+  CssBaseline
+} from '@mui/material';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+import MenuIcon from '@mui/icons-material/Menu';
+
+function App() {
+  const [amount, setAmount] = useState('');
+  const [interest, setInterest] = useState('');
+  const [years, setYears] = useState('');
+  const [monthlyPayment, setMonthlyPayment] = useState(null);
+  const [amortizationTable, setAmortizationTable] = useState([]);
+  const [currency, setCurrency] = useState('USD');
+  const [darkMode, setDarkMode] = useState(false);
+
+  const calculateLoan = () => {
+    const principal = parseFloat(amount);
+    const annualInterestRate = parseFloat(interest) / 100;
+    const totalMonths = parseFloat(years) * 12;
+
+    if (!principal || !annualInterestRate || !totalMonths) {
+      return;
+    }
+
+    const monthlyInterestRate = annualInterestRate / 12;
+    const emi = (principal * monthlyInterestRate) / (1 - Math.pow(1 + monthlyInterestRate, -totalMonths));
+    setMonthlyPayment(emi.toFixed(2));
+
+    // Amortization schedule
+    let balance = principal;
+    const schedule = [];
+    for (let i = 1; i <= totalMonths; i++) {
+      const interestPayment = balance * monthlyInterestRate;
+      const principalPayment = emi - interestPayment;
+      balance -= principalPayment;
+      schedule.push({
+        month: i,
+        principal: principalPayment.toFixed(2),
+        interest: interestPayment.toFixed(2),
+        balance: balance > 0 ? balance.toFixed(2) : '0.00',
+      });
+    }
+    setAmortizationTable(schedule);
+  };
+
+  const resetTable = () => {
+    setAmount('');
+    setInterest('');
+    setYears('');
+    setMonthlyPayment(null);
+    setAmortizationTable([]);
+  };
+
+  const currencySymbols = {
+    USD: '$',
+    EUR: '€',
+    INR: '₹',
+  };
+
+  const currencies = ['USD', 'EUR', 'INR'];
+
+  const theme = createTheme({
+    palette: {
+      mode: darkMode ? 'dark' : 'light',
+    },
+  });
+
+  const toggleDarkMode = () => {
+    setDarkMode(!darkMode);
+  };
+
+  return (
+    <ThemeProvider theme={theme}>
+      <CssBaseline /> {/* Ensures background + text adapt to theme */}
+      <AppBar position="static">
+        <Toolbar>
+          <MenuIcon sx={{ mr: 2 }} />
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+            Loan Calculator
+          </Typography>
+          <Switch checked={darkMode} onChange={toggleDarkMode} />
+        </Toolbar>
+      </AppBar>
+
+      <Container sx={{ mt: 4 }}>
+        <Typography variant="h4" gutterBottom>Loan Calculator Dashboard</Typography>
+
+        <TextField
+          label="Loan Amount"
+          variant="outlined"
+          fullWidth
+          type="number"
+          value={amount}
+          onChange={(e) => setAmount(e.target.value)}
+          sx={{ mb: 2 }}
+        />
+
+        <TextField
+          label="Interest Rate (%)"
+          variant="outlined"
+          fullWidth
+          type="number"
+          value={interest}
+          onChange={(e) => setInterest(e.target.value)}
+          sx={{ mb: 2 }}
+        />
+
+        <TextField
+          label="Term (Years)"
+          variant="outlined"
+          fullWidth
+          type="number"
+          value={years}
+          onChange={(e) => setYears(e.target.value)}
+          sx={{ mb: 2 }}
+        />
+
+        <Button variant="contained" color="primary" onClick={calculateLoan} sx={{ mr: 2 }}>
+          CALCULATE
+        </Button>
+
+        <Button variant="outlined" color="secondary" onClick={resetTable}>
+          RESET TABLE
+        </Button>
+
+        {monthlyPayment && (
+          <>
+            <Typography variant="h6" sx={{ mt: 3 }}>
+              Monthly EMI: {currencySymbols[currency]}{monthlyPayment}
+            </Typography>
+
+            <TextField
+              select
+              label="Currency"
+              value={currency}
+              onChange={(e) => setCurrency(e.target.value)}
+              sx={{ mt: 2 }}
+            >
+              {currencies.map((cur) => (
+                <MenuItem key={cur} value={cur}>{cur}</MenuItem>
+              ))}
+            </TextField>
+          </>
+        )}
+
+        {amortizationTable.length > 0 && (
+          <div style={{ marginTop: '30px', overflowX: 'auto' }}>
+            <Typography variant="h6" gutterBottom>Amortization Schedule ({currency})</Typography>
+            <Table>
+              <TableHead>
+                <TableRow>
+                  <TableCell>Month</TableCell>
+                  <TableCell>Principal</TableCell>
+                  <TableCell>Interest</TableCell>
+                  <TableCell>Remaining Balance</TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {amortizationTable.map((row) => (
+                  <TableRow key={row.month}>
+                    <TableCell>{row.month}</TableCell>
+                    <TableCell>{currencySymbols[currency]}{row.principal}</TableCell>
+                    <TableCell>{currencySymbols[currency]}{row.interest}</TableCell>
+                    <TableCell>{currencySymbols[currency]}{row.balance}</TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </div>
+        )}
+      </Container>
+    </ThemeProvider>
+  );
+}
+
+export default App; -->
